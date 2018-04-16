@@ -1,0 +1,96 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="someID"></div>
+    <p id='para1' onmouseenter="eventHandler();" onmouseout="eventMouseDown();"> Hover Over Me</p>
+    <ul id="listBelow">
+        <il id="firsItem" onclick="eventAddElement()">Click on me -first element</il>
+    </ul>
+    <form>
+            Username:
+            <input type='text' id='username' placeholder="Your Name" />
+            <br> Email:
+            <input type="e-mail" id='e-mail' placeholder="yourname@email.com">
+            <br> Password:
+            <input type="password" id='password' placeholder="6 chars or more">
+            <br> Repeat password:
+            <input type="password" id='repeatPassword' placeholder="must match the passwod above">
+            <br> Phone Number:
+            <input type="number" id='phoneNumber' placeholder="15 digits">
+            <br> Country:
+            <input type="text" id='country' placeholder="Only Israel or USA">
+            <br>
+            <button type="button" onclick="submitForm();">Submit</button>
+            <div id="msg"></div>
+        </form>
+
+    <script>
+            var para = document.createElement("p");
+            var textnode = document.createTextNode("Hello world!");
+            para.appendChild(textnode);
+            document.getElementById("container").appendChild(para);
+    
+            var btn = document.createElement('button');
+             var text = document.createTextNode("Click Me!");
+            btn.appendChild(text);
+             document.getElementById('someID').appendChild(btn);
+             
+             btn.onclick = function() {
+         alert("You clicked me");}
+
+         var eventHandler = function() {
+             document.getElementById('para1').innerHTML = "Thank You!";
+         }
+         function eventMouseDown(){
+            document.getElementById('para1').innerHTML = " Hover Over Me";
+         }
+        
+        function eventAddElement(){
+            var list=document.getElementById("listBelow");
+            var newElement= document.createElement('li');
+            var elementText = document.createTextNode("another element");
+            newElement.appendChild(elementText);
+
+            list.appendChild(newElement);
+        }
+
+        function submitForm() {
+            var usernameElement = document.getElementById('username');
+            var username = usernameElement.value;
+            var password = document.getElementById('password').usernameElement.value;
+            var repeatPassword = document.getElementById('repeatPassword').usernameElement.value;
+            var country = document.getElementById('country').usernameElement.value;   
+            var phoneNumber = document.getElementById('country').usernameElement.value;           
+        
+
+            if (username.length < 5) {
+                document.getElementById('msg').innerHTML = "The supplied username is too short, try again using 5 or more characters";
+            }     
+            if (password.length < 6) {
+                document.getElementById('msg').innerHTML = "The supplied password is too short, try again using 5 or more characters";
+            } 
+            if(repeatPassword!=password){
+                document.getElementById('msg').innerHTML = "The password is not match with the confirm password, try again using 5 or more characters";
+            }
+            if(country!="Israel" && country!="USA")
+            {
+                document.getElementById('msg').innerHTML = "Invaliad password, try again using 5 or more characters";
+            }
+            if(phoneNumber>15)
+            {
+                document.getElementById('msg').innerHTML = "The phone number is too long, try again using 15 or lee characters";
+            }
+
+        }
+    </script>
+        
+</body>
+</html>
